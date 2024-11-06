@@ -30,30 +30,30 @@ const Navbar = () => {
       {/* nav icon container */}
       <div className="nav-icon">logo</div>
 
-      <div className="flex-col justify-end">
+      <div className="flex-col md:flex text-right justify-items-end">
         {" "}
         {/* nav links container */}
         <div id="hamburger" className="cursor-pointer md:hidden">
           <MenuIcon />
         </div>
         {/* nav-links-icons */}
-        <div className="items-center hidden md:block" id="menu">
+        <div className="items-center hidden md:flex" id="menu">
           {/* links only */}
           <div>
-            <ul className="flex-col">
-              <li className="ml-4 mr-4">
+            <ul className="md:flex ">
+              <li className="md:ml-4 md:mr-4 mt-2">
                 <a href="">Home</a>
               </li>
-              <li className="ml-4 mr-4">
+              <li className="md:ml-4 md:mr-4 mt-2">
                 <a href="">About</a>
               </li>
-              <li className="ml-4 mr-4">
+              <li className="md:ml-4 md:mr-4 mt-2">
                 <a href="">Tech Stacks</a>
               </li>
-              <li className="ml-4 mr-4">
+              <li className="md:ml-4 md:mr-4 mt-2">
                 <a href="">Projects</a>
               </li>
-              <li className="ml-4 mr-4">
+              <li className="md:ml-4 md:mr-4 mt-2">
                 <a href="">Contact</a>
               </li>
             </ul>
@@ -66,7 +66,7 @@ const Navbar = () => {
             <a href="https://x.com/VictorChuk16839">
               <Twitter size={20} strokeWidth={1.5} className="ml-2 mr-2" />
             </a>
-            <a href="">
+            <a href="https://www.linkedin.com/in/victor-chukwuemeka-a70156310/">
               <Linkedin size={20} strokeWidth={1.5} className="ml-2 mr-2" />
             </a>
           </div>
