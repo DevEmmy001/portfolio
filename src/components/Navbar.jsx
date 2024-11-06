@@ -59,7 +59,7 @@ const Navbar = () => {
             </ul>
           </div>
           {/* icons only */}
-          <div className="hidden md:flex">
+          <div className="flex mt-2 md:flex">
             <a href="https://github.com/DevEmmy001">
               <GithubIcon size={20} strokeWidth={1.5} className="ml-2 mr-2" />
             </a>
