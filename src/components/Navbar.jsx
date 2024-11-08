@@ -1,78 +1,62 @@
-import React, { useEffect } from "react";
-import { GithubIcon, Twitter, Linkedin, MenuIcon } from "lucide-react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { GithubIcon, Twitter, Linkedin, Menu, XIcon } from "lucide-react";
 
 const Navbar = () => {
-  useEffect(() => {
-    // Get the elements after the component mounts
-    const hamburger = document.querySelector("#hamburger");
-    const menu = document.querySelector("#menu");
+  const navLinks = [
+    { name: "Home", Link: "/" },
+    { name: "About", Link: "/" },
+    { name: "Tech Stack", Link: "/" },
+    { name: "Projects", Link: "/" },
+    { name: "Contacts", Link: "/" },
+  ];
 
-    // Define the toggle function to handle classList toggle
-    const toggleMenu = () => {
-      menu.classList.toggle("hidden");
-    };
-
-    // Ensure these elements exist before adding event listeners
-    if (hamburger && menu) {
-      hamburger.addEventListener("click", toggleMenu);
-    }
-
-    // Clean up the event listener on component unmount
-    return () => {
-      if (hamburger && menu) {
-        hamburger.removeEventListener("click", toggleMenu);
-      }
-    };
-  }, []); // Empty dependency array to run only on mount and unmount
+  const [open, setisOpen] = useState(false);
 
   return (
-    <nav className="font-MT md:w-full h-auto bg-white shadow-lg flex justify-between p-6 text-sm">
-      {/* nav icon container */}
-      <div className="nav-icon">logo</div>
+    <div className="font-PS shadow-md w-full fixed top-0 left-0">
+      {/* Flex container for logo and navigation links */}
+      <div className="flex items-center justify-between w-full md:px-10 py-4 px-7 bg-white">
+        {/* site nav logo */}
+        <div>
+          <p className="text-lg font-bold">Emeka</p>
+        </div>
 
-      <div className="flex-col md:flex text-right justify-items-end">
-        {" "}
-        {/* nav links container */}
-        <div id="hamburger" className="cursor-pointer md:hidden">
-          <MenuIcon />
+        {/* mobile nav icon */}
+        <div
+          onClick={() => setisOpen(!open)}
+          className="absolute right-8 top-4 cursor-pointer md:hidden"
+        >
+          {open ? <XIcon /> : <Menu />}
         </div>
-        {/* nav-links-icons */}
-        <div className="items-center hidden md:flex" id="menu">
-          {/* links only */}
-          <div>
-            <ul className="md:flex ">
-              <li className="md:ml-4 md:mr-4 mt-2">
-                <a href="">Home</a>
-              </li>
-              <li className="md:ml-4 md:mr-4 mt-2">
-                <a href="">About</a>
-              </li>
-              <li className="md:ml-4 md:mr-4 mt-2">
-                <a href="">Tech Stacks</a>
-              </li>
-              <li className="md:ml-4 md:mr-4 mt-2">
-                <a href="">Projects</a>
-              </li>
-              <li className="md:ml-4 md:mr-4 mt-2">
-                <a href="">Contact</a>
-              </li>
-            </ul>
-          </div>
-          {/* icons only */}
-          <div className="flex mt-2 md:flex">
-            <a href="https://github.com/DevEmmy001">
-              <GithubIcon size={20} strokeWidth={1.5} className="ml-2 mr-2" />
-            </a>
-            <a href="https://x.com/VictorChuk16839">
-              <Twitter size={20} strokeWidth={1.5} className="ml-2 mr-2" />
-            </a>
-            <a href="https://www.linkedin.com/in/victor-chukwuemeka-a70156310/">
-              <Linkedin size={20} strokeWidth={1.5} className="ml-2 mr-2" />
-            </a>
-          </div>
-        </div>
+
+        {/* site nav links */}
+        <ul
+          className={`pl-8 sm:justify-end text-sm md:flex md:items-center md:space-x-6 md:static absolute left-0 w-full bg-white transition-all duration-500 ease-in md:top-0 ${
+            open ? "top-12" : "top-[-490px]"
+          }`}
+        >
+          {navLinks.map((link) => (
+            <li className="my-7 md:my-0" key={link.name}>
+              <a href={link.Link}>{link.name}</a>
+            </li>
+          ))}
+          <li>
+            <div className="flex gap-4 mt-4 md:mt-0 md:ml-6">
+              <a href="https://github.com/DevEmmy001/">
+                <GithubIcon size={20} strokeWidth={1} />
+              </a>
+              <a href="https://x.com/VictorChuk16839">
+                <Twitter size={20} strokeWidth={1} />
+              </a>
+              <a href="https://www.linkedin.com/in/victor-chukwuemeka-a70156310">
+                <Linkedin size={20} strokeWidth={1} />
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
   );
 };
 

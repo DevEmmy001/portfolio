@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        MT: ["Montserrat", "sans-serif"]
+        PS: ["Poppins", "sans-serif"]
      }
     },
   },
